@@ -1,0 +1,21 @@
+{
+  "results": {
+    "read_amplification": 8.119,
+    "write_amplification": 1.045,
+    "space_amplification": 1.688,
+    "operation_throughput_ops": 47039,
+    "operation_latency_micros": 21.259,
+    "block_cache_hit_ratio": 0.221,
+    "bloom_filter_useful": 0.942,
+    "compaction_throughput": 53.1,
+    "compaction_latency": 9330,
+    "read_latency_p50": 11.910678,
+    "read_latency_p95": 175.822768,
+    "read_latency_p99": 289.787365,
+    "read_latency_p100": 4715.000000,
+    "write_latency_p50": 7.981580,
+    "write_latency_p95": 13.467817,
+    "write_latency_p99": 20.411590,
+    "write_latency_p100": 890.000000
+  }
+}

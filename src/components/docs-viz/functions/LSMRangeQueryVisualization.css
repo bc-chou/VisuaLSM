@@ -1,0 +1,129 @@
+.componentWrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .componentCard {
+    margin: 0;
+  }
+  
+  .componentHeader {
+    border-bottom: 1px solid var(--ifm-color-emphasis-200);
+    background: var(--ifm-color-emphasis-100);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 0.25rem;
+  }
+  
+  .componentName {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .componentRecency {
+    font-size: 0.65rem;
+    text-align: center;
+    opacity: 0.7;
+  }
+  
+  .componentBody {
+    padding: 0.25rem;
+    max-height: 160px;
+    overflow-y: auto;
+  }
+  
+  .keyValueItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+    transition: all var(--ifm-transition-fast) ease;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    margin: 0.25rem 0;
+    padding: 0.25rem;
+    border: 1px solid;
+  }
+  
+  .keyValueKey {
+    font-family: monospace;
+  }
+  
+  .keyValueValue {
+    font-family: monospace;
+  }
+  
+  .tombstoneValue {
+    color: var(--ifm-color-danger);
+  }
+  
+  .iteratorMarker {
+    color: var(--ifm-color-primary);
+    font-size: 0.6rem;
+    font-weight: 600;
+  }
+  
+  .endMarker {
+    color: var(--ifm-color-primary);
+    font-size: 0.7rem;
+    text-align: center;
+    padding: 0.25rem;
+    border: 1px dashed var(--ifm-color-primary);
+    border-radius: 4px;
+    background: var(--ifm-color-emphasis-100);
+  }
+  
+  .processingContent {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .processingData {
+    padding: 0.5rem;
+    background: var(--ifm-color-success);
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .processingItem {
+    font-family: monospace;
+    font-size: 0.8rem;
+  }
+  
+  .processingEmpty {
+    opacity: 0.6;
+    font-size: 0.8rem;
+  }
+  
+  .resultWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .resultItem {
+    font-size: 0.7rem;
+    padding: 0.25rem;
+    border-radius: 4px;
+    margin: 0;
+  }
+  
+  .resultKey {
+    font-family: monospace;
+  }
+  
+  .resultSource {
+    font-size: 0.65rem;
+    opacity: 0.7;
+  }
+  
+  .emptyResultSet {
+    opacity: 0.6;
+    font-size: 0.8rem;
+    min-height: 43.5px;
+  }

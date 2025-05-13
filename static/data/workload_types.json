@@ -1,0 +1,32 @@
+[
+  {
+    "id": "point-lookup",
+    "name": "Point Lookup",
+    "description": "Random key lookups"
+  },
+  {
+    "id": "range-query",
+    "name": "Range Query",
+    "description": "Small to medium range scans"
+  },
+  {
+    "id": "write-heavy",
+    "name": "Random Write",
+    "description": "High volume of random writes"
+  },
+  {
+    "id": "mixed-write",
+    "name": "Mixed (Write-Heavy 80/20)",
+    "description": "80% writes, 20% reads"
+  },
+  {
+    "id": "mixed-read",
+    "name": "Mixed (Read-Heavy 80/20)",
+    "description": "80% reads, 20% writes"
+  },
+  {
+    "id": "mixed-balanced",
+    "name": "Mixed (Balanced 50/50)",
+    "description": "Equal reads and writes"
+  }
+]

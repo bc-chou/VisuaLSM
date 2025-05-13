@@ -1,0 +1,908 @@
+/* Main container and sections */
+.mainContainer {
+  max-width: 100%;
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Header styling */
+.experimentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.experimentTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.headerBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  padding: 0.375rem 0.75rem;
+  background-color: var(--ifm-color-info-lightest);
+  color: var(--ifm-color-info-darkest);
+  border-radius: 9999px;
+}
+
+html[data-theme='dark'] .headerBadge {
+  background-color: var(--ifm-color-info-darkest);
+  color: var(--ifm-color-info-lightest);
+}
+
+.badgeIcon {
+  color: currentColor;
+}
+
+/* Section layout */
+.selectionSection,
+.parameterSection,
+.resultsSection {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+html[data-theme='dark'] .selectionSection,
+html[data-theme='dark'] .parameterSection,
+html[data-theme='dark'] .resultsSection {
+  background-color: var(--ifm-color-emphasis-200);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--foreground);
+}
+
+.sectionDescription {
+  font-size: 0.9375rem;
+  color: var(--muted-foreground);
+  margin-bottom: 1.25rem;
+}
+
+/* Loading state */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+html[data-theme='dark'] .loadingContainer {
+  background-color: var(--ifm-color-emphasis-200);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+.spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0.25rem solid var(--ifm-color-emphasis-200);
+  border-top-color: var(--ifm-color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loadingText {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--foreground);
+}
+
+/* Config selector */
+.configSelectorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.configSelectorLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.configSection {
+  flex: 1;
+  min-width: 300px;
+}
+
+.sectionLabel {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  color: var(--foreground);
+}
+
+/* Base configuration cards */
+.presetCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.presetCard {
+  flex: 1;
+  min-width: 100px;
+  max-width: 180px;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--ifm-color-emphasis-0);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.presetCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme='dark'] .presetCard {
+  background-color: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+html[data-theme='dark'] .presetCard:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.selectedPreset {
+  border: 2px solid var(--ifm-color-primary);
+  background-color: var(--ifm-color-primary-lightest);
+}
+
+html[data-theme='dark'] .selectedPreset {
+  background-color: var(--ifm-color-primary-darkest);
+}
+
+.presetTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.metricLabel {
+  font-weight: 500;
+  margin-right: 0.1875rem;
+}
+
+/* Workload cards - Modified for equal width using grid */
+.workloadCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.75rem;
+}
+
+.workloadCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--ifm-color-emphasis-0);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.workloadCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme='dark'] .workloadCard {
+  background-color: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+html[data-theme='dark'] .workloadCard:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.selectedWorkload {
+  border: 2px solid var(--ifm-color-primary);
+  background-color: var(--ifm-color-primary-lightest);
+}
+
+html[data-theme='dark'] .selectedWorkload {
+  background-color: var(--ifm-color-primary-darkest);
+}
+
+.workloadTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--foreground);
+}
+
+.workloadDescription {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+/* Configuration Info Section */
+.configInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.selectedConfigInfo {
+  flex: 1;
+}
+
+.configDescription {
+  font-size: 0.9375rem;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* Parameter selector */
+.parameterSelectorContainer {
+  position: relative;
+}
+
+/* Impact explanation - ADDED */
+.impactExplanation {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  background-color: var(--ifm-color-info-lightest);
+  font-size: 0.875rem;
+  color: var(--ifm-color-info-darkest);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+html[data-theme='dark'] .impactExplanation {
+  background-color: rgba(37, 150, 190, 0.1);
+  color: rgba(129, 196, 220, 0.9);
+}
+
+.impactExplanationIcon {
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+}
+
+.impactLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.impactLegendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+}
+
+/* NEW: Horizontal scrolling container for parameter cards */
+.parameterScrollContainer {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  gap: 1.25rem;
+  /* Add smooth scrolling */
+  scroll-behavior: smooth;
+  /* Hide scrollbar in different browsers but keep functionality */
+  scrollbar-width: thin;
+  scrollbar-color: var(--ifm-color-emphasis-300) transparent;
+}
+
+.parameterScrollContainer::-webkit-scrollbar {
+  height: 6px;
+}
+
+.parameterScrollContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.parameterScrollContainer::-webkit-scrollbar-thumb {
+  background-color: var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+}
+
+/* Ensure parameter cards have consistent width in horizontal scroll */
+.parameterCard {
+  flex: 0 0 300px;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  background-color: var(--ifm-color-emphasis-0);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  height: fit-content;
+}
+
+html[data-theme='dark'] .parameterCard {
+  background-color: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+.parameterTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--foreground);
+}
+
+.parameterDescription {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin-bottom: 0.75rem;
+}
+
+.impactIndicators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.impactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+}
+
+.impactLabel {
+  color: var(--muted-foreground);
+}
+
+.highImpact {
+  color: var(--ifm-color-danger);
+  font-weight: 500;
+}
+
+.moderateImpact {
+  color: var(--ifm-color-warning-darkest);
+  font-weight: 500;
+}
+
+.lowImpact {
+  color: var(--ifm-color-success);
+  font-weight: 500;
+}
+
+html[data-theme='dark'] .moderateImpact {
+  color: var(--ifm-color-warning);
+}
+
+.optionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Current option button styling - MODIFIED */
+.currentOptionButton {
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  background-color: var(--ifm-color-emphasis-50);
+  border: 1px dashed var(--ifm-color-emphasis-300);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.currentLabel {
+  font-weight: 500;
+  color: var(--muted-foreground);
+  margin-right: 0.25rem;
+}
+
+.currentValue {
+  font-weight: 500;
+}
+
+html[data-theme='dark'] .currentOptionButton {
+  background-color: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+.optionButton {
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  background-color: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.optionButton:hover {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+html[data-theme='dark'] .optionButton {
+  background-color: var(--ifm-color-emphasis-200);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+html[data-theme='dark'] .optionButton:hover {
+  background-color: var(--ifm-color-emphasis-300);
+}
+
+.selectedOption {
+  background-color: var(--ifm-color-primary-lightest);
+  border-color: var(--ifm-color-primary);
+}
+
+html[data-theme='dark'] .selectedOption {
+  background-color: var(--ifm-color-primary-darkest);
+  border-color: var(--ifm-color-primary);
+}
+
+.optionDescription {
+  font-size: 0.75rem;
+  font-weight: normal;
+  color: var(--muted-foreground);
+  margin-top: 0.25rem;
+  width: 100%;
+}
+
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  z-index: 5;
+}
+
+html[data-theme='dark'] .loadingOverlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Results panel */
+.resultsPanelContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.resultsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.resultsTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.parameterChangeBadge {
+  font-size: 0.8125rem;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--ifm-color-warning-lightest);
+  color: var(--ifm-color-warning-darkest);
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+html[data-theme='dark'] .parameterChangeBadge {
+  background-color: var(--ifm-color-warning-darkest);
+  color: var(--ifm-color-warning-lightest);
+}
+
+.metricsLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+  gap: 1.5rem;
+}
+
+.metricsCategory {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.categoryTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--foreground);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  padding-bottom: 0.5rem;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.metricCard {
+  padding: 1rem;
+  background-color: var(--ifm-color-emphasis-0);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.highlightedMetric {
+  background-color: var(--ifm-color-primary-lightest);
+  border-color: var(--ifm-color-primary-light);
+}
+
+html[data-theme='dark'] .metricCard {
+  background-color: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+html[data-theme='dark'] .highlightedMetric {
+  background: linear-gradient(145deg, #1d43dc, #1c4db7);
+  border-color: #3b4252;
+}
+
+.metricName {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin-bottom: 0.375rem;
+}
+
+.metricValueContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.baseMetricValue {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.metricComparison {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.comparisonArrow {
+  color: var(--muted-foreground);
+}
+
+.varMetricValue {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.betterMetric {
+  font-size: 0.8125rem;
+  color: var(--ifm-color-success);
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.worseMetric {
+  font-size: 0.8125rem;
+  color: var(--ifm-color-danger);
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.neutralMetric {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+/* Collapsible Explanation Panel - UPDATED */
+.explanationPanelContainer {
+  width: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+html[data-theme='dark'] .explanationPanelContainer {
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+.explanationToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: var(--ifm-color-info-lightest);
+  color: var(--ifm-color-info-darkest);
+  border: none;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+html[data-theme='dark'] .explanationToggle {
+  background-color: #3454d4;
+  color: rgba(200, 225, 234, 0.9);
+}
+
+.explanationToggle:hover {
+  background-color: var(--ifm-color-info-light);
+}
+
+html[data-theme='dark'] .explanationToggle:hover {
+  background-color: rgba(37, 150, 190, 0.2);
+}
+
+.explanationIcon {
+  margin-right: 0.5rem;
+}
+
+.explanationToggleLabel {
+  flex: 1;
+}
+
+.chevronIcon {
+  color: var(--ifm-color-info-darkest);
+}
+
+html[data-theme='dark'] .chevronIcon {
+  color: rgba(37, 150, 190, 0.9);
+}
+
+.explanationPanel {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme='dark'] .explanationPanel {
+  border-top-color: rgba(37, 150, 190, 0.2);
+}
+
+.explanationContent {
+  padding: 1.5rem;
+  background-color: var(--ifm-color-info-lightest);
+}
+
+html[data-theme='dark'] .explanationContent {
+  background-color: rgba(37, 150, 190, 0.05);
+  color:  rgba(200, 225, 234, 0.9);
+}
+
+.explanationColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.configExplanation, 
+.workloadExplanationColumn {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme='dark'] .configExplanation,
+html[data-theme='dark'] .workloadExplanationColumn {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.configExplanationTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  color: var(--foreground);
+}
+
+.explanationText {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--foreground);
+  font-size: 0.9375rem;
+}
+
+.explanationList {
+  padding-left: 1.5rem;
+  margin: 0 0 1rem 0;
+}
+
+.explanationList li {
+  margin-bottom: 0.375rem;
+  color: var(--foreground);
+  font-size: 0.9375rem;
+}
+
+.tradeoffWarning,
+.tradeoffNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+}
+
+.tradeoffWarning {
+  background-color: var(--ifm-color-warning-lightest);
+  color: var(--ifm-color-warning-darkest);
+}
+
+.tradeoffNote {
+  background-color: var(--ifm-color-info-lightest);
+  color: var(--ifm-color-info-darkest);
+}
+
+html[data-theme='dark'] .tradeoffWarning {
+  background-color: rgba(255, 196, 0, 0.1);
+  color: rgba(255, 196, 0, 0.9);
+}
+
+html[data-theme='dark'] .tradeoffNote {
+  background-color: rgba(37, 150, 190, 0.1);
+  color: rgba(37, 150, 190, 0.9);
+}
+
+.warningIcon,
+.noteIcon {
+  margin-top: 0.125rem;
+}
+
+.workloadExplanationTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  color: var(--foreground);
+}
+
+/* Parameter change explanation */
+.parameterChangeExplanation {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme='dark'] .parameterChangeExplanation {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.parameterChangeTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  color: var(--foreground);
+}
+
+.parameterChangeDescription {
+  font-size: 0.9375rem;
+  color: var(--foreground);
+  margin-bottom: 0.75rem;
+}
+
+.parameterImpacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.parameterImpactItem {
+  font-size: 0.875rem;
+  color: var(--foreground);
+}
+
+/* General principles section */
+.generalPrinciples {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme='dark'] .generalPrinciples {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.principlesTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+  color: var(--foreground);
+}
+
+.principlePoints {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.principle {
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+}
+
+html[data-theme='dark'] .principle {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Title area styling for the badge positioning */
+.visualizationTitle {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+  .configSelectorLayout {
+    flex-direction: column;
+  }
+  
+  .metricsLayout {
+    grid-template-columns: 1fr;
+  }
+  
+  .explanationColumns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .presetCard, .workloadCard {
+    min-width: 100%;
+  }
+  
+  .metricsGrid {
+    grid-template-columns: 1fr;
+  }
+}
