@@ -1,0 +1,84 @@
+.visualizationContainer {
+    max-width: 100%;
+    margin: 0 auto;
+    color: var(--ifm-font-color-base);
+  }
+  
+  .materialCard {
+    background: var(--ifm-card-background-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: all var(--ifm-transition-fast) ease;
+  }
+  
+  .cardHeader {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--ifm-color-emphasis-200);
+    background: var(--ifm-color-emphasis-100);
+  }
+  
+  .cardTitle {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .cardBody {
+    padding: 0.75rem;
+    /* max-height: 430px; */
+    /* overflow-y: auto; */
+  }
+  
+  .explanationBox {
+    padding: 0.5rem;
+    border-radius: 4px;
+    background: var(--ifm-color-emphasis-100);
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+  
+  .stepTitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  
+  .cardFooter {
+    padding: 0.5rem 0.75rem;
+    border-top: 1px solid var(--ifm-color-emphasis-200);
+    background: var(--ifm-color-emphasis-100);
+  }
+  
+  .insightsContainer {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+  }
+  
+  .insightsSummary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .insightsList {
+    font-size: 0.8rem;
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+  
+  .insightsList li {
+    margin: 0.25rem 0;
+  }
+  
+  .sectionDivider {
+    height: 1px;
+    background: var(--ifm-color-emphasis-200);
+    margin: 0.75rem 0;
+  }
+  
+  .sectionTitle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  

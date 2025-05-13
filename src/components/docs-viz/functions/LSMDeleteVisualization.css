@@ -1,0 +1,136 @@
+.componentWrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    min-height: 200px;
+  }
+  
+  .componentCard {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .componentHeader {
+    border-bottom: 1px solid var(--ifm-color-emphasis-200);
+    background: var(--ifm-color-emphasis-100);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 0.25rem;
+  }
+  
+  .componentName {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .componentRecency {
+    font-size: 0.65rem;
+    text-align: center;
+    opacity: 0.7;
+  }
+  
+  .componentBody {
+    padding: 0.25rem;
+    height: 160px;
+    overflow-y: auto;
+    flex: 1;
+  }
+  
+  .emptyComponent {
+    text-align: center;
+    padding: 1rem 0;
+    color: var(--ifm-color-emphasis-500);
+    font-style: italic;
+    font-size: 0.8rem;
+  }
+  
+  .keyValueItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+    transition: all var(--ifm-transition-fast) ease;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    margin: 0.25rem 0;
+    padding: 0.25rem;
+    border: 1px solid;
+  }
+  
+  .keyValueKey {
+    font-family: monospace;
+  }
+  
+  .keyValueValue {
+    font-family: monospace;
+  }
+  
+  .tombstoneValue {
+    color: var(--ifm-color-danger);
+    text-decoration: line-through;
+  }
+  
+  .walContent {
+    background: var(--ifm-color-emphasis-100);
+    border-radius: 4px;
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+    min-height: 40px;
+  }
+  
+  .walEntry {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.8rem;
+    font-family: monospace;
+  }
+  
+  .walOperation {
+    font-weight: bold;
+    color: var(--ifm-color-danger);
+  }
+  
+  .statusContent {
+    background: var(--ifm-color-emphasis-100);
+    border-radius: 4px;
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.8rem;
+    border-left: 4px solid;
+    min-height: 40px;
+  }
+  
+  .statusContent.compaction,
+  .statusContent.compaction_complete,
+  .statusContent.flush_complete {
+    border-left-color: var(--ifm-color-primary);
+  }
+  
+  .statusContent.read {
+    border-left-color: var(--ifm-color-success);
+  }
+  
+  .statusContent.grace_period {
+    border-left-color: var(--ifm-color-warning);
+  }
+  
+  .statusContent.tombstone_removed {
+    border-left-color: var(--ifm-color-success-dark);
+  }
+  
+  .sectionDivider {
+    height: 1px;
+    background: var(--ifm-color-emphasis-200);
+    margin: 0.75rem 0;
+  }
+  
+  .sectionTitle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }

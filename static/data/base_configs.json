@@ -1,0 +1,35 @@
+{
+  "read-heavy": {
+    "name": "Read-Optimized",
+    "description": "Optimized for point lookups and range queries with leveled compaction and strong bloom filters",
+    "params": {
+      "compaction_style": "level",
+      "write_buffer_size": 64,
+      "level0_file_num_compaction_trigger": 4,
+      "bloom_bits_per_key": 10,
+      "block_size": 16
+    }
+  },
+  "write-heavy": {
+    "name": "Write-Optimized",
+    "description": "Optimized for high write throughput with universal compaction and larger memtables",
+    "params": {
+      "compaction_style": "universal",
+      "write_buffer_size": 256,
+      "level0_file_num_compaction_trigger": 8,
+      "bloom_bits_per_key": 6,
+      "block_size": 32
+    }
+  },
+  "balanced": {
+    "name": "Balanced",
+    "description": "Balanced read/write performance with moderate settings for all parameters",
+    "params": {
+      "compaction_style": "level",
+      "write_buffer_size": 128,
+      "level0_file_num_compaction_trigger": 6,
+      "bloom_bits_per_key": 8,
+      "block_size": 16
+    }
+  }
+}

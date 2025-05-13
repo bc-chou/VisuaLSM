@@ -1,0 +1,137 @@
+{
+  "compaction_style": {
+    "name": "Compaction Style",
+    "description": "Algorithm used for organizing and merging SSTables",
+    "options": [
+      {
+        "value": "level",
+        "label": "Leveled",
+        "description": "Organizes data into distinct non-overlapping levels with size ratio between levels"
+      },
+      {
+        "value": "universal",
+        "label": "Universal",
+        "description": "Optimizes for lower write amplification by maintaining fewer, larger files and allowing more flexible file organization"
+      }
+    ],
+    "impact": {
+      "read": "High impact on read performance. Leveled provides better read performance by reducing the number of files to check for each query but with higher write amplification.",
+      "write": "High impact on write performance. Universal provides better write throughput with lower write amplification.",
+      "space": "Moderate impact on space usage. Leveled typically has lower space amplification because it maintains tighter size ratios between levels and reduces key overlap."
+    }
+  },
+  "write_buffer_size": {
+    "name": "Write Buffer Size (MB)",
+    "description": "Size of each memtable before flushing to disk as an immutable SSTable file",
+    "options": [
+      {
+        "value": 64,
+        "label": "64 MB",
+        "description": "Smaller buffers, more frequent flushes, lower memory usage."
+      },
+      {
+        "value": 128,
+        "label": "128 MB",
+        "description": "Medium buffers, moderate flush frequency, suitable for balanced workloads"
+      },
+      {
+        "value": 256,
+        "label": "256 MB",
+        "description": "Larger buffers, fewer flushes, better write throughput"
+      }
+    ],
+    "impact": {
+      "read": "Moderate impact on read performance. Larger memtables can increase lookup latency and affect cache utilization, but reduce likelihood of disk reads for recent data.",
+      "write": "High impact on write performance. Larger buffers improve write throughput by batching more writes and reducing compaction frequency.",
+      "space": "Moderate impact on durability and memory usage. Larger buffers use more memory."
+    }
+  },
+  "level0_file_num_compaction_trigger": {
+    "name": "L0 Compaction Trigger",
+    "description": "Number of files in L0 that triggers compaction to L1",
+    "options": [
+      {
+        "value": 4,
+        "label": "4 files",
+        "description": "More frequent compactions, lower read amplification (fewer L0 files to check), good for read-optimized workloads"
+      },
+      {
+        "value": 6,
+        "label": "6 files",
+        "description": "Moderate compaction frequency, balanced trade-off for mixed workloads"
+      },
+      {
+        "value": 8,
+        "label": "8 files",
+        "description": "Less frequent compactions, reduces write stalls, ideal for write-heavy workloads but increases read latency"
+      }
+    ],
+    "impact": {
+      "read": "High impact on read performance. Lower values reduce read amplification because every L0 file must be checked during lookups (L0 files may have overlapping key ranges).",
+      "write": "High impact on write stalls. Higher values reduce write stalls by allowing more L0 files before triggering potentially expensive compactions.",
+      "space": "Moderate impact on space usage. Higher values increase space amplification due to more overlapping key ranges in L0."
+    }
+  },
+  "bloom_bits_per_key": {
+    "name": "Bloom Filter Bits",
+    "description": "Bits per key in bloom filter for efficiently skipping SSTable reads",
+    "options": [
+      {
+        "value": 0,
+        "label": "Disabled",
+        "description": "No bloom filter, highest read amplification (must check every potential SSTable), useful only when memory is extremely constrained"
+      },
+      {
+        "value": 6,
+        "label": "6 bits/key",
+        "description": "Basic filter, reasonable read improvement with minimal memory usage"
+      },
+      {
+        "value": 8,
+        "label": "8 bits/key", 
+        "description": "Strong filter, good read performance with moderate memory usage, ideal for balanced workloads"
+      },
+      {
+        "value": 10,
+        "label": "10 bits/key",
+        "description": "Very strong filter, minimizes unnecessary reads, optimal for read-heavy workloads"
+      }
+    ],
+    "impact": {
+      "read": "Very high impact on point lookup performance. More bits reduce false positives (unnecessary SSTable reads), dramatically improving point lookup speed. No effect on range scans.",
+      "write": "No direct impact on write performance, but filters must be generated during SSTable creation.",
+      "space": "Moderate impact on memory usage. More bits increase memory consumption linearly."
+    }
+  },
+    "block_size": {
+      "name": "Block Size (KB)",
+      "description": "Size of data blocks in SSTable files",
+      "options": [
+        {
+          "value": 8,
+          "label": "8 KB",
+          "description": "Small blocks minimize read amplification (less unnecessary data read for each query) but increases index size due to more sst files"
+        },
+        {
+          "value": 16,
+          "label": "16 KB",
+          "description": "Medium blocks, balanced performance for mixed access patterns"
+        },
+        {
+          "value": 32,
+          "label": "32 KB",
+          "description": "Medium-large blocks, better for range scans but increased read amplification for point lookups"
+        },
+        {
+          "value": 64,
+          "label": "64 KB",
+          "description": "Large blocks, optimal for sequential range scans with minimal space overhead but highest read amplification for point lookups"
+        }
+      ],
+      "impact": {
+        "read": "High impact on read patterns. Smaller blocks reduce read amplification for point lookups, larger blocks improve range scans but increase read amplification for single key lookups.",
+        "write": "Low impact on write performance.",
+        "space": "Moderate impact on space efficiency. Larger blocks typically have less overhead and better compression ratios."
+      }
+  }
+}
